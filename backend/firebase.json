@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ca-gov-c202c",
+  "private_key_id": "228284ae45c8587353caf792f9fdf9e026b77ad8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDQ0Bzyt9lgxoBA\noCaE85JUWSmefBUFMXasGD6d+IbHe0hq/K2qe6vQDvcpruTBXwxKfILxv+875ZuQ\nuET9vqjckn/m9ykbueOwd1XYrYw0qTP51cOutRzZJMp3kGNGXVDQrqUhbH4zOd0u\ndCq4Vc0b74RnN6IWN+XA1x7qyl0malLsv4FpWizeo1cc3dEJUAwW/qqKDxKq7CPu\nUvw9p9wLSmfP8r9fMupORUth0GARWj1/LARpJWT6v7hv+7KbD2sjRHZ1k2ThyQu3\nAAB5DsXXdQPYXdhtF+nqqDQBfKdKAf3aSrmDx2s4fJ1NTXxQXqNp3b/72Kk6M386\nAuK3DQEnAgMBAAECggEAAskvqDspKDMDmHwKgbPzTXjJm1yantOpkder36aVAWP0\n8+5HFoMDKFtH2UNtuBAxHfgy7woH9uL54UN/vfUZyF7Z0IrcuKIood+4n3xYiUBq\n1xsDL1ZvP+oJkAflqyyo/4tjf4VjN3cEiD3ytLBXou6BIqAhBmJ/cPKn+asJ3ajF\nfUrV0mrBDt6TPZp6CrOjDKo4QQRBWiK6aLXkAkHHOcLap5ma5cK2jzOQKMycENJ7\nQ1VCD9CgSijcPt5scab+wwMa5qlcIkyVnV3KjTAhhuHfJ6kekc+aU0mzTRd5dKt0\nwcbb76vHMJBLPxgeBQtbtAAY5Qua+v/YXjkLRYRV4QKBgQD1o5fgFdeGQJYe+S4G\n2n6mPpc6IJyCA60/l//yhLByBjb06Xm+AS7Wjhkm0MB7E8Vz3TQ54fuEwq36odIP\n/6lx5kA9iQZmB8PVOgcmgEZj3enU3goPX+SgvBLnKInHVAir59y9fD3aSKsYUQ7a\nFkc+fVbarn2uSQMG53WdowswGQKBgQDZnt9Ha7j/CsFh7bzGsnO5+O5G2OA5gIV6\n1UB2OPLvL20vbUpVZVEDKrXHaIoGbYfhUpqYwofNaRR/VdGTQOfm3uKoTbtlKOo/\nqKNGp3R9hOzoyxUCRXiOVnKURJKgyJ4+5qvEI4PwBK1t9GSHe6Tvrbdy42F3mQF9\nhPn2BZbjPwKBgQC/6uVKi0Ys+mFQKdewOx4gvV5iaABgBIdj3Fp5HPrO29QsXg5k\nSYBS2gsErKz2fGgVMosPfmSJQaG05KG/Jj05ZHBko56AMSjse74Ccs6MUGHVkvXB\nNWbnvon2WVHsjteHmEx7L4sT9RrYkNxNwIJBbKRjj1laxmi7CDR4yV6AYQKBgQCX\n/UncS/QszIo7pxsNe10wKhfhC1+vSX/wRjh7WVLykqEjWqVr9xMZrx6+YtjjnGQm\njtbCkjrez+Es/fcdbVuJ92k+OuwCvwy74UAH/LRzZf9Ap3XI3FRStTXZL/toqDU9\noUWd+2AOpnWqMeJ0bXrImv9hEkXkjcxoqhMaLNUxaQKBgC5ovNKjQsT4+CU6czXe\nfSXeZtWMpaGUDBbbcbdETMy1ziug7noiNFetgiOohuzb6aTj0BB3t8QwWNT1yVz4\nfZZzrSSKlFNC58U3sjqCS0aqTrxzHbayh23OibmglsWiErTIJ0PQsy3gLRsmk7Gm\ntFuJN8qTyjYlKfBrscC5Ch06\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-66mx4@ca-gov-c202c.iam.gserviceaccount.com",
+  "client_id": "106166643189272505909",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-66mx4%40ca-gov-c202c.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
