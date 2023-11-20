@@ -1,0 +1,15 @@
+.Database{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    color: white;
+}
+
+.Database .form-control {
+    width: 500px;  /* Adjust the value based on how long you want the input fields to be */
+}
+
+@media (max-width: 768px) {
+    .Profile .form-control {
+        width: 300px;  
+      }
+}

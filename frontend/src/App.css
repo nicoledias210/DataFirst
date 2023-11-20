@@ -1,0 +1,58 @@
+/* Add this to your App.css file */
+
+/* USC Color Theme */
+:root {
+  --usc-red: #990000; /* Replace with the exact USC red color code */
+  --usc-yellow: #ffcc00; /* Replace with the exact USC yellow color code */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Apply the background to the entire page */
+body {
+  background-color: var(--usc-red);
+}
+
+/* Make sure the main content container stretches to fill the space */
+.contain {
+  min-height: 100vh; /* vh unit represents the height of the viewport */
+  /* Other styles... */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header h1 {
+  color: var(--usc-yellow);
+}
+
+.navLink {
+  display: flex;
+}
+
+.navLink a {
+  color: white; /* or another color that contrasts well with USC red */
+  margin-left: 1rem; /* Spacing between nav items */
+}
+
+.subtitle-usc {
+  color: var(--usc-yellow);
+}
+
+/* Media query to adjust styles for smaller screens if necessary */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+  
+  .navLink {
+    margin-top: 1rem;
+  }
+}
