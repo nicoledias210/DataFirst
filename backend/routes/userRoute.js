@@ -5,11 +5,93 @@ import fileUpload from 'express-fileupload';
 import crypto from 'crypto';
 import sgMail from '@sendgrid/mail';
 import User from "../models/User.js";
+import JobPosting from "../models/JobPosting.js";
+
 
 const router = express.Router();
 
 router.use(fileUpload());
-sgMail.setApiKey('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'); 
+sgMail.setApiKey('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'); 
+
+// Filtering and searching for Job Posting
+// multiple choose: all support except the vacancy announcement type
+// http://localhost:3031/job-postings/filter?agency=Department%20of%20Defense&bureau=Defense%20Commissary%20Agency&appointment_type=Permanent&vacancy_announcement_types=NON-DE&grade=7&job_series_number=1144&job_series_title=Commissary Management&announcement_locations=HI&announcement_locations=CA
+router.get('/job-postings/filter', async (req, res) => {
+  try {
+    const query = {};
+
+    // Trasfer non-array object to array
+    function toArray(value) {
+      return Array.isArray(value) ? value : [value];
+    }
+    
+    // for agency, bureau, appointment_type 和 job_series_title use Regular Expression
+    ['agency', 'bureau', 'appointment_type', 'job_series_title'].forEach(field => {
+      if (req.query[field] && req.query[field] !== 'ALL') {
+        query[field] = { $in: toArray(req.query[field]).map(item => new RegExp(item, 'i')) };
+      }
+    });
+    
+    // for grade 和 job_series_number use number directly
+    ['grade', 'job_series_number'].forEach(field => {
+      if (req.query[field] && req.query[field] !== 'ALL') {
+        const values = toArray(req.query[field]).map(item => parseInt(item, 10)).filter(item => !isNaN(item));
+        if (values.length > 0) {
+          query[field] = { $in: values };
+        } else {
+          return res.status(400).send({ message: `Invalid ${field} value provided.` });
+        }
+      }
+    });
+    
+    // for the state, use regular expression to match it with the end of the location string
+    if (req.query.announcement_locations && req.query.announcement_locations !== 'ALL') {
+      let locations = req.query.announcement_locations;
+      if (!Array.isArray(locations)) {
+        locations = [locations];
+      }
+      query.announcement_locations = { $in: locations.map(loc => new RegExp('\\b' + loc.trim() + '\\b', 'i')) };
+    }
+    
+    // Special handling for vacancy_announcement_types with 'ALL', 'DE', and 'Non-DE' options
+    if (req.query.vacancy_announcement_types) {
+      if (req.query.vacancy_announcement_types === 'DE') {
+        query.vacancy_announcement_types = { $regex: '\\bDE\\b', $options: 'i' };
+      } else if (req.query.vacancy_announcement_types === 'NON-DE') {
+        query.vacancy_announcement_types = { $not: { $regex: '\\bDE\\b', $options: 'i' } };
+      }
+    }
+      // If 'ALL' is selected, we don't need to filter by this field
+    
+
+    console.log(query);
+    const jobPostings = await JobPosting.find(query);
+    const filteredJobPostings = jobPostings.map(posting => ({
+      agency: posting.agency,
+      bureau: posting.bureau,
+      appointment_type: posting.appointment_type,
+      vacancy_announcement_types: posting.vacancy_announcement_types,
+      job_series_number: posting.job_series_number,
+      job_series_title: posting.job_series_title,
+      grade: posting.grade,
+      announcement_locations: posting.announcement_locations
+    }));
+    res.json(filteredJobPostings );
+    // Convert JSON to CSV
+    // const json2csvParser = new Parser();
+    // const csv = json2csvParser.parse(jobPostings);
+
+    // Set the headers to prompt for download
+    // res.setHeader('Content-disposition', 'attachment; filename=job-postings.csv');
+    // res.set('Content-Type', 'text/csv');
+
+    // Send the CSV file data as a download
+    // res.status(200).end(csv);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: "Error in fetching job postings", error });
+  }
+});
 
 // POST method for User Register (WITHOUT EMAIL VERIFICATION)
 router.post("/users/register", (request, response) => {
@@ -54,43 +136,46 @@ router.post("/users/register", (request, response) => {
 
 // POST method for User Registration with email send
 router.post("/users/requestEmailConfirmation", async (request, response) => {
+  console.log("Request received:", request.body); // Log the incoming request body
   try {
-      const { email } = request.body;
+    const { email } = request.body;
+    
+    // Generate a unique token
+    const token = crypto.randomBytes(20).toString('hex');
+    console.log("Generated token:", token); // Log the generated token
+    const expiration = new Date();
+    expiration.setHours(expiration.getHours() + 2); // token expires in 2 hours
 
-      // Generate a unique token
-      const token = crypto.randomBytes(20).toString('hex');
-      const expiration = new Date();
-      expiration.setHours(expiration.getHours() + 2); // token expires in 2 hours
+    // create a new user instance and collect the data
+    const user = new User({
+      email,
+      confirmationToken: token,
+      tokenExpiration: expiration
+    });
+    console.log("User object before saving:", user); // Log the user object before saving
 
-      // create a new user instance and collect the data
-      const user = new User({
-          email,
-          confirmationToken: token,
-          tokenExpiration: expiration
-      });
+    // save the new user details
+    await user.save();
+    console.log("User saved successfully"); // Log after saving user
 
-      // save the new user details
-      await user.save();
+    // Email content
+    const msg = {
+      to: email,
+      from: 'uscclearinitiative@gmail.com', // Replace with your verified sender
+      subject: 'Complete your registration',
+      text: `Click the link to set your password and complete the registration process: https://usc-clear-initiative.wm.r.appspot.com/Register?complete=true&token=${token}`,
+    };
+    console.log("Email message:", msg); // Log the email message content
 
-      // Email content
-      const msg = {
-          to: email,
-          from: 'kechengliu16@163.com', // Change it in the sendgrid
-          subject: 'Complete your registration',
-          text: `Click the link to set your password and complete the registration process: http://localhost:3000/Register?complete=true&token=${token}`,
-      };
+    // Send the email
+    await sgMail.send(msg);
+    console.log("Email sent successfully"); // Log after attempting to send the email
 
-      // Send the email
-      await sgMail.send(msg);
-
-      response.status(201).send({ message: 'Check your email to complete registration.',
-                                  token: token});
-
+    // Send a successful response
+    response.status(201).send({ message: 'Check your email to complete registration.', token: token });
   } catch (error) {
-      response.status(500).send({
-          message: "Error occurred",error
-          
-      });
+    console.error("Error occurred in /users/requestEmailConfirmation route:", error); // Log any error that occurs
+    response.status(500).send({ message: "Error occurred", error });
   }
 });
 
@@ -241,8 +326,8 @@ router.put("/users/:id/admin", async (request, response) => {
           return response.status(404).send({ message: "User not found" });
       }
 
-      // Ensure we don't change the admin status for "admin@mola.lab"
-      if (user.email === "admin@mola.lab") {
+      // Ensure we don't change the admin status for "uscclearinitiative@gmail.com"
+      if (user.email === "uscclearinitiative@gmail.com") {
           return response.status(403).send({ message: "Cannot change the admin status for this user." });
       }
 
