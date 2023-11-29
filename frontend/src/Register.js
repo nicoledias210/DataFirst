@@ -20,7 +20,7 @@ function Register({setRegister, setCurrentUser}) {
     const handleEmailSubmission = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3031/posts/users/requestEmailConfirmation', { email });
+            const response = await axios.post('https://federal-labor-market-dashboard.wl.r.appspot.com/users/requestEmailConfirmation', { email });
             setMessage(response.data.message);
         } catch (error) {
             setMessage(error.response?.data?.message || 'Error occurred.');
@@ -31,11 +31,11 @@ function Register({setRegister, setCurrentUser}) {
         e.preventDefault();
         try {
             setRegister(true);
-            const response = await axios.post(`http://localhost:3031/posts/users/completeRegistration/${token}`, { password });
+            const response = await axios.post(`https://federal-labor-market-dashboard.wl.r.appspot.com/users/completeRegistration/${token}`, { password });
             setMessage(response.data.message);
             console.log(response.data._id);
             setCurrentUser(response.data._id);
-            navigate('/Publication');
+            navigate('/Home');
         } catch (error) {
             setMessage(error.response?.data?.message || 'Error occurred.');
         }

@@ -13,7 +13,7 @@ export default function Login({setRegister, setCurrentUser, setIsUserAdmin}) {
     const handleSubmit = (e) => {
         const configuration = {
             method: "post",
-            url: "http://localhost:3031/users/login",
+            url: "https://federal-labor-market-dashboard.wl.r.appspot.com/users/login",
             data: {
               email,
               password,
@@ -24,7 +24,7 @@ export default function Login({setRegister, setCurrentUser, setIsUserAdmin}) {
                 setRegister(true);
                 setCurrentUser(result.data._id);
                 setIsUserAdmin(result.data.isAdmin);
-                navigate('/Datastories');
+                navigate('/Home');
                 //console.log(result);
                 //console.log(result.data._id);
                 //console.log(result.data.isAdmin);

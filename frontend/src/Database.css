@@ -1,15 +1,19 @@
-.Database{
-    margin-top: 1rem;
-    margin-left: 1rem;
-    color: white;
+/*.container {
+    margin-left: 15px; /* Adjust the value as needed */
+
+
+.react-tagsinput-tag {
+  background-color: blue; /* Green background */
+  color: #ffffff; /* White text */
+  border-radius: 0.25rem; /* Rounded corners */
+  padding: 0.25rem 0.5rem; /* Some padding around the text */
 }
 
-.Database .form-control {
-    width: 500px;  /* Adjust the value based on how long you want the input fields to be */
+.react-tagsinput {
+  border: 1px solid #ced4da; /* Input border color */
 }
 
-@media (max-width: 768px) {
-    .Profile .form-control {
-        width: 300px;  
-      }
+.react-tagsinput input {
+  color: #495057; /* Text color for the input */
+  border: none; /* Removing additional borders inside the component */
 }

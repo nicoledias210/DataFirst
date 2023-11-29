@@ -1,8 +1,8 @@
 function Datastories() {
 
     return (
-        <h1>Data Stories To be finished</h1>
+        <h1>Datastories To be finished</h1>
     );
 }
 
-export default Datastories;
+export default Datastories

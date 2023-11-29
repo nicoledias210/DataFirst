@@ -1,58 +1,86 @@
-/* Add this to your App.css file */
-
-/* USC Color Theme */
 :root {
   --usc-red: #990000; /* Replace with the exact USC red color code */
   --usc-yellow: #ffcc00; /* Replace with the exact USC yellow color code */
 }
 
-html, body {
+* {
+  box-sizing: border-box;
+}
+
+body, html {
   height: 100%;
   margin: 0;
-}
-
-/* Apply the background to the entire page */
-body {
+  padding: 0;
   background-color: var(--usc-red);
+  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Make sure the main content container stretches to fill the space */
-.contain {
-  min-height: 100vh; /* vh unit represents the height of the viewport */
-  /* Other styles... */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* 确保容器占满整个屏幕宽度 */
+  width: 100%;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  justify-content: space-between; /* This will align navLeft to the left and navRight to the right */
+   /* Added padding on all sides */
 }
 
-.header h1 {
+.titleContainer {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 1rem; /* Give some space around the title */
+}
+
+.titleContainer h1 {
   color: var(--usc-yellow);
-}
-
-.navLink {
-  display: flex;
-}
-
-.navLink a {
-  color: white; /* or another color that contrasts well with USC red */
-  margin-left: 1rem; /* Spacing between nav items */
+  margin: 0;
+  font-size: 2rem; /* Increase the size of the h1 */
 }
 
 .subtitle-usc {
+  margin: 0;
   color: var(--usc-yellow);
+  font-size: 1.2rem; /* Slightly smaller font size for the subtitle */
 }
 
-/* Media query to adjust styles for smaller screens if necessary */
+.navLeft a, .navRight a {
+  color: var(--usc-yellow);
+  text-decoration: none;
+  margin: 0 10px; /* Space between the links */
+  padding: 0.5rem 1rem; /* Padding for clickable area */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navLeft a:hover, .navRight a:hover {
+  background-color: var(--usc-yellow);
+  color: var(--usc-red);
+  border-radius: 5px; /* Rounded corners for hover effect */
+}
+
+.main-content {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
 @media (max-width: 768px) {
-  .header {
+  .header, .navLeft, .navRight, .titleContainer {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  
-  .navLink {
-    margin-top: 1rem;
+
+  .navLeft, .navRight {
+    margin-bottom: 0.5rem;
+  }
+
+  .navLeft a, .navRight a {
+    display: block; /* Each link takes the full width */
+    margin: 5px 0; /* Space between stacked links */
   }
 }

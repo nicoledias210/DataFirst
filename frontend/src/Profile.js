@@ -9,14 +9,14 @@ function Profile({ setRegister, currentUser }) {
     const [alertVariant, setAlertVariant] = useState('danger');
 
     const logout = () => {
-        window.location.href = "/Datastories";
+        window.location.href = "/Home";
         setRegister(false);
     }
 
     const handleChangePassword = async () => {
         try {
             console.log('currentUser:',currentUser);
-            const response = await fetch(`http://localhost:3031/users/${currentUser}/password`, {
+            const response = await fetch(`https://federal-labor-market-dashboard.wl.r.appspot.com/users/${currentUser}/password`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ function Profile({ setRegister, currentUser }) {
 
     const handleDeleteAccount = async () => {
         try {
-            const response = await fetch(`http://localhost:3031/users/${currentUser}/delete`, {
+            const response = await fetch(`https://federal-labor-market-dashboard.wl.r.appspot.com/users/${currentUser}/delete`, {
                 method: 'DELETE'
             });
 
