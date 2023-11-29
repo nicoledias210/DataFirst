@@ -11,7 +11,7 @@ import JobPosting from "../models/JobPosting.js";
 const router = express.Router();
 
 router.use(fileUpload());
-// sgMail.setApiKey('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'); 
+
 
 // Filtering and searching for Job Posting
 // multiple choose: all support except the vacancy announcement type
