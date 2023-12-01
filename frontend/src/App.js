@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'; // If you installed Bootstrap via npm
 import "./App.css";
-import Register from "./Register";
-import Login from "./Login";
-import Profile from './Profile';
-import Admin from './Admin';
-import Database from './Database';
-import Dashboard from './Dashboard';
-import Contact from './Contact';
-import Datastories from './Datastories';
-import Home from './Home';
+import Register from "./Register.js";
+import Login from "./Login.js";
+import Profile from './Profile.js';
+import Admin from './Admin.js';
+import Database from './Database.js';
+import Dashboard from './Dashboard.js';
+import Contact from './Contact.js';
+import Datastories from './Datastories.js';
+import Home from './Home.js';
 
 function RootRedirect() {
   const navigate = useNavigate();

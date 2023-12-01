@@ -42,7 +42,7 @@ export default function Login({setRegister, setCurrentUser, setIsUserAdmin}) {
         <Form onSubmit={(e)=>handleSubmit(e)} className="login-form">
             {/* email */}
             <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
+                <Form.Label style={{ color:"black" }}>Email</Form.Label>
                 <Form.Control
                     type="email"
                     name="email"
@@ -54,7 +54,7 @@ export default function Login({setRegister, setCurrentUser, setIsUserAdmin}) {
 
             {/* password */}
             <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label style={{ color:"black" }}>Password</Form.Label>
                 <Form.Control
                     type="password"
                     name="password"

@@ -62,11 +62,11 @@ function Profile({ setRegister, currentUser }) {
         <div className="Profile">
             <Form>
                 <Form.Group>
-                    <Form.Label>Current Password</Form.Label>
+                    <Form.Label style={{ color:"black" }}>Current Password</Form.Label>
                     <Form.Control type="password" placeholder="Enter current password" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>New Password</Form.Label>
+                    <Form.Label style={{ color:"black" }}>New Password</Form.Label>
                     <Form.Control type="password" placeholder="Enter new password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
                 </Form.Group>
                 <Button variant="primary" onClick={handleChangePassword} className='mt-3'>Change Password</Button>

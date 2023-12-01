@@ -10,7 +10,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# [START app_yaml]
 env: flex
 runtime: nodejs
+
+# You can remove the handlers section if you're using a custom server to serve static assets
+
+
 # [END app_yaml]

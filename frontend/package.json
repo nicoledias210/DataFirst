@@ -2,12 +2,14 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
+    "express": "^4.18.1",
     "file-saver": "^2.0.5",
     "json2csv": "^6.0.0-alpha.2",
     "os-browserify": "^0.3.0",
@@ -15,6 +17,7 @@
     "react-bootstrap": "^2.9.1",
     "react-bootstrap-typeahead": "^6.3.2",
     "react-dom": "^18.2.0",
+    "react-pdf": "^7.5.1",
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
     "react-tagsinput": "^3.20.3",
@@ -23,7 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
+    "react-start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -45,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

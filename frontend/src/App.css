@@ -1,6 +1,6 @@
 :root {
-  --usc-red: #990000; /* Replace with the exact USC red color code */
-  --usc-yellow: #ffcc00; /* Replace with the exact USC yellow color code */
+  --usc-red: white; /* Replace with the exact USC red color code */
+  --usc-yellow: #6495ED; /* Replace with the exact USC yellow color code */
 }
 
 * {

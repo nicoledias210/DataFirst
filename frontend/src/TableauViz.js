@@ -10,7 +10,7 @@ function TableauViz({ vizUrl }) {
       if (window.tableau && ref.current) {
         viz = new window.tableau.Viz(ref.current, vizUrl, {
           width: '100%',
-          height: '800px',
+          height: '1000px',
           hideTabs: true,
         });
       }
