@@ -8,6 +8,7 @@ Explore features at [USC CLEAR Initiative Dashboard](https://usc-clear-initiativ
 
 ## Features
 
+- **User Login & Email Registration**: The website support sign in function and user can registration with a workable email.
 - **Data Visualization**: Interactive charts embedded from Tableau provide a visual display of government job data.
 - **Data Filtering**: Filter data across multiple dimensions, including agency, location, and more.
 - **Data Download**: Data can be filtered and downloaded in CSV format for further analysis.
