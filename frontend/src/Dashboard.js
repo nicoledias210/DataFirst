@@ -17,7 +17,7 @@ function Dashboard() {
 
   // Tableau 视图的URL
   const vizUrls = {
-    jobMap: "https://us-west-2b.online.tableau.com/t/uscclearinitiative/views/AssessingtheUSPublicSectorLaborMarketDashboard/Dashboard1/25dcfa8b-afb2-48db-b7de-bfd5300ff29e/6b338297-9143-4427-9145-d9b9bb44cef5",
+    jobMap: "https://public.tableau.com/views/AssessingtheUSPublicSectorLaborMarketDashboard/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link",
    // avgPostingLength: "https://public.tableau.com/views/SampleGraphsforPublicSectorJobMarketData/avgpostinglengthlocation?:language=zh-CN&:display_count=n&:origin=viz_share_link"
   };
 
