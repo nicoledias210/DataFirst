@@ -31,6 +31,7 @@ npm install
 # Install frontend dependencies
 cd ../frontend
 npm install
+npm run build
 ```
 3. Start the server
 ```bash
